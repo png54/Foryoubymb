@@ -47,6 +47,13 @@
       .animate-float {
         animation: float 4s ease-in-out infinite;
       }
+      /* Smooth fade transition for sections */
+      .catalog-section {
+        transition: opacity 0.3s ease;
+      }
+      .catalog-section.hidden-section {
+        display: none;
+      }
     </style>
   </head>
   <body class="bg-[#FDF8FA] text-slate-800 font-sans antialiased min-h-screen pb-12">
@@ -55,8 +62,16 @@
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-xs border-b border-lightPink/20">
       <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
         <!-- Logo and Brand name -->
-        <a href="#" class="flex items-center gap-3">
-          <img src="1.JPG" alt="For you by mb Logo" class="w-10 h-10 rounded-full object-cover border border-burgundy/30 shadow-sm">
+        <a href="#" onclick="resetToAllSections(); scrollToTop(); return false;" class="flex items-center gap-3 cursor-pointer">
+          <img 
+            src="./1.JPG" 
+            alt="For you by mb Logo" 
+            class="w-10 h-10 rounded-full object-cover border-2 border-burgundy/30 shadow-sm"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="w-10 h-10 rounded-full border-2 border-burgundy/30 shadow-sm bg-burgundy/10 items-center justify-center hidden">
+            <span class="font-serif italic font-bold text-burgundy text-lg">mb</span>
+          </div>
           <span class="font-serif italic font-bold text-xl md:text-2xl text-burgundy tracking-wide">For you by mb</span>
         </a>
 
@@ -70,16 +85,16 @@
       <!-- Categories row - professional tabs without emojis -->
       <nav class="bg-white border-t border-lightPink/10">
         <div class="max-w-7xl mx-auto flex overflow-x-auto whitespace-nowrap no-scrollbar scroll-smooth gap-1 px-4 py-3 md:justify-center">
-          <button onclick="scrollToSection('cosmetics-sec')" id="tab-cosmetics" class="nav-tab active px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all bg-burgundy text-white shadow-xs">
+          <button onclick="filterByCategory('cosmetics')" id="tab-cosmetics" class="nav-tab active px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all bg-burgundy text-white shadow-xs">
             Cosmétique
           </button>
-          <button onclick="scrollToSection('supplements-sec')" id="tab-supplements" class="nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20">
+          <button onclick="filterByCategory('supplements')" id="tab-supplements" class="nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20">
             Compléments alimentaires
           </button>
-          <button onclick="scrollToSection('clothing-sec')" id="tab-clothing" class="nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20">
+          <button onclick="filterByCategory('clothing')" id="tab-clothing" class="nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20">
             Vêtements Femme
           </button>
-          <button onclick="scrollToSection('shoes-sec')" id="tab-shoes" class="nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20">
+          <button onclick="filterByCategory('shoes')" id="tab-shoes" class="nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20">
             Chaussures Femme
           </button>
         </div>
@@ -87,10 +102,15 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-[#E5C8DD]/50 via-[#E7B8CF]/20 to-[#FDF8FA] pt-8 pb-12 px-4 overflow-hidden border-b border-lightPink/10">
+    <section id="hero-sec" class="relative bg-gradient-to-br from-[#E5C8DD]/50 via-[#E7B8CF]/20 to-[#FDF8FA] pt-8 pb-12 px-4 overflow-hidden border-b border-lightPink/10">
       <div class="max-w-3xl mx-auto text-center relative z-10 flex flex-col items-center">
         <!-- Logo image in hero -->
-        <img src="1.JPG" alt="For you by mb Logo" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-burgundy/30 shadow-md mb-5 animate-float">
+        <img 
+          src="./1.JPG" 
+          alt="For you by mb Logo" 
+          class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-burgundy/30 shadow-md mb-5 animate-float"
+          onerror="this.style.display='none';"
+        >
         
         <!-- Large Title -->
         <h1 class="font-serif italic font-extrabold text-4xl sm:text-5xl md:text-6xl text-burgundy tracking-tight leading-tight mb-4">
@@ -103,7 +123,7 @@
         </p>
 
         <!-- CTA button -->
-        <button onclick="scrollToSection('cosmetics-sec')" class="group inline-flex items-center gap-2.5 bg-burgundy text-white hover:bg-[#431223] px-8 py-3.5 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95">
+        <button onclick="filterByCategory('cosmetics')" class="group inline-flex items-center gap-2.5 bg-burgundy text-white hover:bg-[#431223] px-8 py-3.5 rounded-full text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95">
           Découvrir les produits
           <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
         </button>
@@ -118,7 +138,7 @@
     <main class="max-w-7xl mx-auto px-4 py-8 space-y-16">
       
       <!-- Section Cosmetics -->
-      <section id="cosmetics-sec" class="scroll-mt-28">
+      <section id="cosmetics-sec" class="catalog-section scroll-mt-28">
         <div class="border-b-2 border-burgundy/20 pb-4 mb-8 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-lg bg-burgundy/10 flex items-center justify-center text-burgundy">
@@ -134,7 +154,7 @@
       </section>
 
       <!-- Section Supplements -->
-      <section id="supplements-sec" class="scroll-mt-28">
+      <section id="supplements-sec" class="catalog-section scroll-mt-28">
         <div class="border-b-2 border-burgundy/20 pb-4 mb-8 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-lg bg-burgundy/10 flex items-center justify-center text-burgundy">
@@ -150,7 +170,7 @@
       </section>
 
       <!-- Section Clothing -->
-      <section id="clothing-sec" class="scroll-mt-28">
+      <section id="clothing-sec" class="catalog-section scroll-mt-28">
         <div class="border-b-2 border-burgundy/20 pb-4 mb-8 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-lg bg-burgundy/10 flex items-center justify-center text-burgundy">
@@ -166,7 +186,7 @@
       </section>
 
       <!-- Section Shoes -->
-      <section id="shoes-sec" class="scroll-mt-28">
+      <section id="shoes-sec" class="catalog-section scroll-mt-28">
         <div class="border-b-2 border-burgundy/20 pb-4 mb-8 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <span class="w-8 h-8 rounded-lg bg-burgundy/10 flex items-center justify-center text-burgundy">
@@ -228,7 +248,7 @@
 
     <!-- Custom Logic Script -->
     <script>
-      // Compact Premium Product List
+      // Product List
       const products = [
         // Cosmétiques
         {
@@ -346,6 +366,7 @@
         view: "cart",
         deliveryMethod: "domicile",
         shippingFee: 600,
+        currentFilter: "all", // "all" | "cosmetics" | "supplements" | "clothing" | "shoes"
         customer: {
           lastName: "",
           firstName: "",
@@ -368,20 +389,113 @@
         });
       }
 
-      // Smooth scroll to a section on the page
-      function scrollToSection(id) {
-        const el = document.getElementById(id);
-        if (el) {
-          const offset = 110;
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = el.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
-          const offsetPosition = elementPosition - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
+      // ========== NOUVEAU : Système de filtrage par catégorie ==========
+      
+      // Filter products by category and show/hide sections
+      function filterByCategory(category) {
+        state.currentFilter = category;
+        
+        // Map des sections
+        const allSections = ['cosmetics-sec', 'supplements-sec', 'clothing-sec', 'shoes-sec'];
+        const categoryToSection = {
+          'cosmetics': 'cosmetics-sec',
+          'supplements': 'supplements-sec',
+          'clothing': 'clothing-sec',
+          'shoes': 'shoes-sec'
+        };
+        
+        // Hide all sections first
+        allSections.forEach(secId => {
+          const section = document.getElementById(secId);
+          if (section) {
+            section.classList.add('hidden-section');
+          }
+        });
+        
+        // Show only the selected section
+        const targetSectionId = categoryToSection[category];
+        if (targetSectionId) {
+          const targetSection = document.getElementById(targetSectionId);
+          if (targetSection) {
+            targetSection.classList.remove('hidden-section');
+          }
+        }
+        
+        // Update active tab styling
+        updateActiveTab(category);
+        
+        // Scroll to the section
+        if (targetSectionId) {
+          setTimeout(() => {
+            const el = document.getElementById(targetSectionId);
+            if (el) {
+              const offset = 120;
+              const bodyRect = document.body.getBoundingClientRect().top;
+              const elementRect = el.getBoundingClientRect().top;
+              const elementPosition = elementRect - bodyRect;
+              const offsetPosition = elementPosition - offset;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }, 100);
+        }
+      }
+      
+      // Reset to show all sections
+      function resetToAllSections() {
+        state.currentFilter = 'all';
+        
+        const allSections = ['cosmetics-sec', 'supplements-sec', 'clothing-sec', 'shoes-sec'];
+        allSections.forEach(secId => {
+          const section = document.getElementById(secId);
+          if (section) {
+            section.classList.remove('hidden-section');
+          }
+        });
+        
+        // Reset all tabs to inactive
+        const allTabs = ['tab-cosmetics', 'tab-supplements', 'tab-clothing', 'tab-shoes'];
+        allTabs.forEach(tabId => {
+          const tab = document.getElementById(tabId);
+          if (tab) {
+            tab.className = "nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20";
+          }
+        });
+      }
+      
+      // Scroll to top
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+      
+      // Update active tab
+      function updateActiveTab(activeCategory) {
+        const tabMapping = {
+          'cosmetics': 'tab-cosmetics',
+          'supplements': 'tab-supplements',
+          'clothing': 'tab-clothing',
+          'shoes': 'tab-shoes'
+        };
+        
+        const allTabs = ['tab-cosmetics', 'tab-supplements', 'tab-clothing', 'tab-shoes'];
+        allTabs.forEach(tabId => {
+          const tab = document.getElementById(tabId);
+          if (tab) {
+            tab.className = "nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20";
+          }
+        });
+        
+        const activeTabId = tabMapping[activeCategory];
+        if (activeTabId) {
+          const activeTab = document.getElementById(activeTabId);
+          if (activeTab) {
+            activeTab.className = "nav-tab active px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all bg-burgundy text-white shadow-xs";
+          }
         }
       }
 
@@ -960,7 +1074,6 @@
         }
 
         const confirmBtn = event.currentTarget;
-        const originalContent = confirmBtn.innerHTML;
         confirmBtn.disabled = true;
         confirmBtn.innerHTML = `
           <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -1008,50 +1121,13 @@
         toggleCart();
       };
 
-      function setupScrollObserver() {
-        const sections = [
-          { id: 'cosmetics-sec', tabId: 'tab-cosmetics' },
-          { id: 'supplements-sec', tabId: 'tab-supplements' },
-          { id: 'clothing-sec', tabId: 'tab-clothing' },
-          { id: 'shoes-sec', tabId: 'tab-shoes' }
-        ];
-
-        const options = {
-          root: null,
-          rootMargin: '-30% 0px -60% 0px',
-          threshold: 0
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const currentSec = sections.find(sec => sec.id === entry.target.id);
-              if (currentSec) {
-                sections.forEach(sec => {
-                  const tabBtn = document.getElementById(sec.tabId);
-                  if (sec.id === currentSec.id) {
-                    tabBtn.className = "nav-tab active px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all bg-burgundy text-white shadow-xs";
-                  } else {
-                    tabBtn.className = "nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20";
-                  }
-                });
-              }
-            }
-          });
-        }, options);
-
-        sections.forEach(sec => {
-          const el = document.getElementById(sec.id);
-          if (el) observer.observe(el);
-        });
-      }
-
       // App Entry Point
       window.addEventListener("DOMContentLoaded", () => {
         initializeSelections();
         renderCatalog();
         updateBadges();
-        setupScrollObserver();
+        // Par défaut, afficher toutes les sections
+        resetToAllSections();
       });
     </script>
   </body>
