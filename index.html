@@ -47,7 +47,6 @@
       .animate-float {
         animation: float 4s ease-in-out infinite;
       }
-      /* Smooth fade transition for sections */
       .catalog-section {
         transition: opacity 0.3s ease;
       }
@@ -66,10 +65,10 @@
           <img 
             src="./1.JPG" 
             alt="For you by mb Logo" 
-            class="w-10 h-10 rounded-full object-cover border-2 border-burgundy/30 shadow-sm"
+            class="w-10 h-10 rounded-lg object-cover border-2 border-burgundy/30 shadow-sm"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           >
-          <div class="w-10 h-10 rounded-full border-2 border-burgundy/30 shadow-sm bg-burgundy/10 items-center justify-center hidden">
+          <div class="w-10 h-10 rounded-lg border-2 border-burgundy/30 shadow-sm bg-burgundy/10 items-center justify-center hidden">
             <span class="font-serif italic font-bold text-burgundy text-lg">mb</span>
           </div>
           <span class="font-serif italic font-bold text-xl md:text-2xl text-burgundy tracking-wide">For you by mb</span>
@@ -104,11 +103,11 @@
     <!-- Hero Section -->
     <section id="hero-sec" class="relative bg-gradient-to-br from-[#E5C8DD]/50 via-[#E7B8CF]/20 to-[#FDF8FA] pt-8 pb-12 px-4 overflow-hidden border-b border-lightPink/10">
       <div class="max-w-3xl mx-auto text-center relative z-10 flex flex-col items-center">
-        <!-- Logo image in hero -->
+        <!-- Logo image in hero - SQUARE -->
         <img 
           src="./1.JPG" 
           alt="For you by mb Logo" 
-          class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-burgundy/30 shadow-md mb-5 animate-float"
+          class="w-24 h-24 md:w-28 md:h-28 rounded-xl object-cover border-2 border-burgundy/30 shadow-lg mb-5 animate-float"
           onerror="this.style.display='none';"
         >
         
@@ -248,137 +247,34 @@
 
     <!-- Custom Logic Script -->
     <script>
-      // Product List
       const products = [
-        // Cosmétiques
-        {
-          id: "cos-1",
-          category: "cosmetics",
-          name: "Sérum Éclat Vitamine C",
-          desc: "Sérum booster d'éclat hydratant pour une peau lumineuse et repulpée.",
-          price: 2900,
-          image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600",
-          maxQty: 5
-        },
-        {
-          id: "cos-2",
-          category: "cosmetics",
-          name: "Rouge à Lèvres Velours",
-          desc: "Fini mat haute pigmentation, formule hydratante longue tenue.",
-          price: 1800,
-          image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=600",
-          maxQty: 5
-        },
-
-        // Compléments alimentaires
-        {
-          id: "sup-1",
-          category: "supplements",
-          name: "Éclat Cheveux & Ongles",
-          desc: "Complexe fortifiant de biotine et zinc pour booster la pousse.",
-          price: 3200,
-          image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&q=80&w=600",
-          maxQty: 5
-        },
-        {
-          id: "sup-2",
-          category: "supplements",
-          name: "Gélules Collagène Marin",
-          desc: "Soin anti-âge de l'intérieur pour une peau plus ferme.",
-          price: 4500,
-          image: "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?auto=format&fit=crop&q=80&w=600",
-          maxQty: 5
-        },
-
-        // Vêtements
-        {
-          id: "clo-1",
-          category: "clothing",
-          name: "Robe Longue en Lin",
-          desc: "Une robe fluide et élégante, parfaite pour les journées ensoleillées.",
-          price: 6800,
-          image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600",
-          sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-          colors: ["Black", "White", "Pink", "Beige"]
-        },
-        {
-          id: "clo-2",
-          category: "clothing",
-          name: "Blazer Premium Ajusté",
-          desc: "Coupe structurée moderne avec finitions soignées pour un look chic.",
-          price: 8500,
-          image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=600",
-          sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-          colors: ["Black", "White", "Pink", "Beige"]
-        },
-
-        // Chaussures
-        {
-          id: "sho-1",
-          category: "shoes",
-          name: "Sandales à Talons",
-          desc: "Sandales élégantes en cuir de qualité supérieure avec talon stable.",
-          price: 7900,
-          image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&q=80&w=600",
-          sizes: ["36", "37", "38", "39", "40", "41"],
-          colors: ["Black", "White", "Pink", "Beige"]
-        },
-        {
-          id: "sho-2",
-          category: "shoes",
-          name: "Mocassins Cuir Souple",
-          desc: "L'alliance parfaite de l'élégance intemporelle et du confort.",
-          price: 8200,
-          image: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&q=80&w=600",
-          sizes: ["36", "37", "38", "39", "40", "41"],
-          colors: ["Black", "White", "Pink", "Beige"]
-        }
+        { id: "cos-1", category: "cosmetics", name: "Sérum Éclat Vitamine C", desc: "Sérum booster d'éclat hydratant pour une peau lumineuse et repulpée.", price: 2900, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600", maxQty: 5 },
+        { id: "cos-2", category: "cosmetics", name: "Rouge à Lèvres Velours", desc: "Fini mat haute pigmentation, formule hydratante longue tenue.", price: 1800, image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=600", maxQty: 5 },
+        { id: "sup-1", category: "supplements", name: "Éclat Cheveux & Ongles", desc: "Complexe fortifiant de biotine et zinc pour booster la pousse.", price: 3200, image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&q=80&w=600", maxQty: 5 },
+        { id: "sup-2", category: "supplements", name: "Gélules Collagène Marin", desc: "Soin anti-âge de l'intérieur pour une peau plus ferme.", price: 4500, image: "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?auto=format&fit=crop&q=80&w=600", maxQty: 5 },
+        { id: "clo-1", category: "clothing", name: "Robe Longue en Lin", desc: "Une robe fluide et élégante, parfaite pour les journées ensoleillées.", price: 6800, image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=600", sizes: ["XS", "S", "M", "L", "XL", "XXL"], colors: ["Black", "White", "Pink", "Beige"] },
+        { id: "clo-2", category: "clothing", name: "Blazer Premium Ajusté", desc: "Coupe structurée moderne avec finitions soignées pour un look chic.", price: 8500, image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=600", sizes: ["XS", "S", "M", "L", "XL", "XXL"], colors: ["Black", "White", "Pink", "Beige"] },
+        { id: "sho-1", category: "shoes", name: "Sandales à Talons", desc: "Sandales élégantes en cuir de qualité supérieure avec talon stable.", price: 7900, image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&q=80&w=600", sizes: ["36", "37", "38", "39", "40", "41"], colors: ["Black", "White", "Pink", "Beige"] },
+        { id: "sho-2", category: "shoes", name: "Mocassins Cuir Souple", desc: "L'alliance parfaite de l'élégance intemporelle et du confort.", price: 8200, image: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&q=80&w=600", sizes: ["36", "37", "38", "39", "40", "41"], colors: ["Black", "White", "Pink", "Beige"] }
       ];
 
-      // Curated popular Algerian Wilayas for delivery
       const wilayas = [
-        { code: "16", name: "Alger" },
-        { code: "31", name: "Oran" },
-        { code: "19", name: "Sétif" },
-        { code: "25", name: "Constantine" },
-        { code: "09", name: "Blida" },
-        { code: "23", name: "Annaba" },
-        { code: "15", name: "Tizi Ouzou" },
-        { code: "06", name: "Béjaïa" },
-        { code: "13", name: "Tlemcen" },
-        { code: "35", name: "Boumerdès" },
-        { code: "02", name: "Chlef" },
-        { code: "05", name: "Batna" },
-        { code: "27", name: "Mostaganem" },
-        { code: "42", name: "Tipaza" },
-        { code: "43", name: "Mila" },
-        { code: "48", name: "Relizane" },
-        { code: "17", name: "Djelfa" },
-        { code: "14", name: "Tiaret" },
-        { code: "28", name: "M'Sila" },
-        { code: "34", name: "Bordj Bou Arréridj" }
+        { code: "16", name: "Alger" }, { code: "31", name: "Oran" }, { code: "19", name: "Sétif" },
+        { code: "25", name: "Constantine" }, { code: "09", name: "Blida" }, { code: "23", name: "Annaba" },
+        { code: "15", name: "Tizi Ouzou" }, { code: "06", name: "Béjaïa" }, { code: "13", name: "Tlemcen" },
+        { code: "35", name: "Boumerdès" }, { code: "02", name: "Chlef" }, { code: "05", name: "Batna" },
+        { code: "27", name: "Mostaganem" }, { code: "42", name: "Tipaza" }, { code: "43", name: "Mila" },
+        { code: "48", name: "Relizane" }, { code: "17", name: "Djelfa" }, { code: "14", name: "Tiaret" },
+        { code: "28", name: "M'Sila" }, { code: "34", name: "Bordj Bou Arréridj" }
       ];
 
-      // Central Application State
       const state = {
-        cart: [],
-        drawerOpen: false,
-        view: "cart",
-        deliveryMethod: "domicile",
-        shippingFee: 600,
-        currentFilter: "all", // "all" | "cosmetics" | "supplements" | "clothing" | "shoes"
-        customer: {
-          lastName: "",
-          firstName: "",
-          phone: "",
-          wilaya: "",
-          daira: "",
-          address: ""
-        },
+        cart: [], drawerOpen: false, view: "cart", deliveryMethod: "domicile",
+        shippingFee: 600, currentFilter: "all",
+        customer: { lastName: "", firstName: "", phone: "", wilaya: "", daira: "", address: "" },
         catalogSelections: {}
       };
 
-      // Initialize defaults for catalog product variations
       function initializeSelections() {
         products.forEach(p => {
           state.catalogSelections[p.id] = {
@@ -389,42 +285,27 @@
         });
       }
 
-      // ========== NOUVEAU : Système de filtrage par catégorie ==========
-      
-      // Filter products by category and show/hide sections
       function filterByCategory(category) {
         state.currentFilter = category;
-        
-        // Map des sections
         const allSections = ['cosmetics-sec', 'supplements-sec', 'clothing-sec', 'shoes-sec'];
         const categoryToSection = {
-          'cosmetics': 'cosmetics-sec',
-          'supplements': 'supplements-sec',
-          'clothing': 'clothing-sec',
-          'shoes': 'shoes-sec'
+          'cosmetics': 'cosmetics-sec', 'supplements': 'supplements-sec',
+          'clothing': 'clothing-sec', 'shoes': 'shoes-sec'
         };
         
-        // Hide all sections first
         allSections.forEach(secId => {
           const section = document.getElementById(secId);
-          if (section) {
-            section.classList.add('hidden-section');
-          }
+          if (section) section.classList.add('hidden-section');
         });
         
-        // Show only the selected section
         const targetSectionId = categoryToSection[category];
         if (targetSectionId) {
           const targetSection = document.getElementById(targetSectionId);
-          if (targetSection) {
-            targetSection.classList.remove('hidden-section');
-          }
+          if (targetSection) targetSection.classList.remove('hidden-section');
         }
         
-        // Update active tab styling
         updateActiveTab(category);
         
-        // Scroll to the section
         if (targetSectionId) {
           setTimeout(() => {
             const el = document.getElementById(targetSectionId);
@@ -434,77 +315,51 @@
               const elementRect = el.getBoundingClientRect().top;
               const elementPosition = elementRect - bodyRect;
               const offsetPosition = elementPosition - offset;
-              window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-              });
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
           }, 100);
         }
       }
       
-      // Reset to show all sections
       function resetToAllSections() {
         state.currentFilter = 'all';
-        
         const allSections = ['cosmetics-sec', 'supplements-sec', 'clothing-sec', 'shoes-sec'];
         allSections.forEach(secId => {
           const section = document.getElementById(secId);
-          if (section) {
-            section.classList.remove('hidden-section');
-          }
+          if (section) section.classList.remove('hidden-section');
         });
-        
-        // Reset all tabs to inactive
         const allTabs = ['tab-cosmetics', 'tab-supplements', 'tab-clothing', 'tab-shoes'];
         allTabs.forEach(tabId => {
           const tab = document.getElementById(tabId);
-          if (tab) {
-            tab.className = "nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20";
-          }
+          if (tab) tab.className = "nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20";
         });
       }
       
-      // Scroll to top
       function scrollToTop() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       
-      // Update active tab
       function updateActiveTab(activeCategory) {
         const tabMapping = {
-          'cosmetics': 'tab-cosmetics',
-          'supplements': 'tab-supplements',
-          'clothing': 'tab-clothing',
-          'shoes': 'tab-shoes'
+          'cosmetics': 'tab-cosmetics', 'supplements': 'tab-supplements',
+          'clothing': 'tab-clothing', 'shoes': 'tab-shoes'
         };
-        
         const allTabs = ['tab-cosmetics', 'tab-supplements', 'tab-clothing', 'tab-shoes'];
         allTabs.forEach(tabId => {
           const tab = document.getElementById(tabId);
-          if (tab) {
-            tab.className = "nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20";
-          }
+          if (tab) tab.className = "nav-tab px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-burgundy hover:bg-lightPink/20";
         });
-        
         const activeTabId = tabMapping[activeCategory];
         if (activeTabId) {
           const activeTab = document.getElementById(activeTabId);
-          if (activeTab) {
-            activeTab.className = "nav-tab active px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all bg-burgundy text-white shadow-xs";
-          }
+          if (activeTab) activeTab.className = "nav-tab active px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all bg-burgundy text-white shadow-xs";
         }
       }
 
-      // Format Price in Algerian Dinars
       function formatPrice(amount) {
         return amount.toLocaleString('fr-FR') + " DA";
       }
 
-      // Render the catalog items dynamically
       function renderCatalog() {
         const containerMap = {
           cosmetics: document.getElementById("grid-cosmetics"),
@@ -512,8 +367,6 @@
           clothing: document.getElementById("grid-clothing"),
           shoes: document.getElementById("grid-shoes")
         };
-
-        // Clear containers
         Object.values(containerMap).forEach(div => div.innerHTML = "");
 
         products.forEach(p => {
@@ -522,13 +375,11 @@
           div.className = "bg-white rounded-2xl border border-lightPink/20 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group relative";
           div.id = `card-${p.id}`;
 
-          // Category Badge
           let catLabel = "Beauté";
           if (p.category === "supplements") catLabel = "Santé & Bien-être";
           if (p.category === "clothing") catLabel = "Mode Femme";
           if (p.category === "shoes") catLabel = "Souliers";
 
-          // Generate Size Buttons HTML if available
           let sizesHTML = "";
           if (p.sizes) {
             sizesHTML = `
@@ -537,27 +388,18 @@
                 <div class="flex flex-wrap gap-1.5">
                   ${p.sizes.map(sz => {
                     const isActive = selection.size === sz;
-                    return `
-                      <button onclick="selectVariant('${p.id}', 'size', '${sz}')" class="px-3 py-1.5 text-xs font-bold rounded-lg border transition-all ${isActive ? 'bg-burgundy border-burgundy text-white' : 'border-slate-200 text-slate-700 bg-white hover:border-slate-300'}">
-                        ${sz}
-                      </button>
-                    `;
+                    return `<button onclick="selectVariant('${p.id}', 'size', '${sz}')" class="px-3 py-1.5 text-xs font-bold rounded-lg border transition-all ${isActive ? 'bg-burgundy border-burgundy text-white' : 'border-slate-200 text-slate-700 bg-white hover:border-slate-300'}">${sz}</button>`;
                   }).join('')}
                 </div>
-              </div>
-            `;
+              </div>`;
           }
 
-          // Generate Color Buttons HTML with Checkmark indicators if available
           let colorsHTML = "";
           if (p.colors) {
             const colorMapping = {
-              "Black": "bg-slate-900 border-slate-900",
-              "White": "bg-white border-slate-200",
-              "Pink": "bg-[#D394B6] border-[#D394B6]",
-              "Beige": "bg-[#E3CBB7] border-[#E3CBB7]"
+              "Black": "bg-slate-900 border-slate-900", "White": "bg-white border-slate-200",
+              "Pink": "bg-[#D394B6] border-[#D394B6]", "Beige": "bg-[#E3CBB7] border-[#E3CBB7]"
             };
-
             colorsHTML = `
               <div class="mt-4">
                 <span class="text-xs font-semibold text-slate-400 block mb-1.5 uppercase tracking-wider">Couleur</span>
@@ -565,119 +407,75 @@
                   ${p.colors.map(col => {
                     const isActive = selection.color === col;
                     const displayClass = colorMapping[col] || "bg-slate-400";
-                    return `
-                      <button onclick="selectVariant('${p.id}', 'color', '${col}')" class="w-8 h-8 rounded-full ${displayClass} border-2 transition-all relative flex items-center justify-center focus:outline-none ${isActive ? 'ring-2 ring-burgundy/80 ring-offset-2 scale-105' : 'hover:scale-105'}" title="${col}">
-                        ${isActive ? `<i data-lucide="check" class="w-4 h-4 ${col === 'White' ? 'text-slate-800' : 'text-white'}"></i>` : ""}
-                      </button>
-                    `;
+                    return `<button onclick="selectVariant('${p.id}', 'color', '${col}')" class="w-8 h-8 rounded-full ${displayClass} border-2 transition-all relative flex items-center justify-center focus:outline-none ${isActive ? 'ring-2 ring-burgundy/80 ring-offset-2 scale-105' : 'hover:scale-105'}" title="${col}">${isActive ? `<i data-lucide="check" class="w-4 h-4 ${col === 'White' ? 'text-slate-800' : 'text-white'}"></i>` : ""}</button>`;
                   }).join('')}
                 </div>
-              </div>
-            `;
+              </div>`;
           }
 
           const isLimited = (p.category === 'cosmetics' || p.category === 'supplements');
-          const maxVal = isLimited ? 5 : 10;
 
           div.innerHTML = `
-            <!-- Product Image with Zoom effect -->
             <div class="relative aspect-square overflow-hidden bg-slate-50 border-b border-lightPink/10">
               <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-              <!-- Premium Floating Price Badge -->
               <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-xs px-3.5 py-1.5 rounded-full shadow-sm border border-brandPink/20">
                 <span class="text-burgundy font-extrabold text-sm">${formatPrice(p.price)}</span>
               </div>
             </div>
-
-            <!-- Card Body -->
             <div class="p-5 flex-1 flex flex-col justify-between">
               <div>
                 <span class="text-[10px] font-bold text-brandPink uppercase tracking-widest block mb-1">${catLabel}</span>
                 <h3 class="font-serif font-bold text-slate-900 text-base md:text-lg mb-1 group-hover:text-burgundy transition-colors">${p.name}</h3>
                 <p class="text-xs text-slate-500 leading-relaxed">${p.desc}</p>
-                
-                ${sizesHTML}
-                ${colorsHTML}
+                ${sizesHTML} ${colorsHTML}
               </div>
-
-              <!-- Stepper and Action Row -->
               <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-                <!-- Mobile Friendly Quantity Stepper -->
                 <div class="flex items-center border border-slate-200 rounded-xl overflow-hidden bg-slate-50 shrink-0">
-                  <button onclick="changeQty('${p.id}', -1)" class="px-3 py-2.5 text-slate-500 hover:bg-slate-100 transition-colors focus:outline-none" aria-label="Moins">
-                    <i data-lucide="minus" class="w-3.5 h-3.5"></i>
-                  </button>
-                  <span class="px-3 py-1 text-sm font-bold text-slate-800 select-none min-w-[20px] text-center" id="qty-val-${p.id}">
-                    ${selection.qty}
-                  </span>
-                  <button onclick="changeQty('${p.id}', 1)" class="px-3 py-2.5 text-slate-500 hover:bg-slate-100 transition-colors focus:outline-none" aria-label="Plus">
-                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                  </button>
+                  <button onclick="changeQty('${p.id}', -1)" class="px-3 py-2.5 text-slate-500 hover:bg-slate-100 transition-colors focus:outline-none" aria-label="Moins"><i data-lucide="minus" class="w-3.5 h-3.5"></i></button>
+                  <span class="px-3 py-1 text-sm font-bold text-slate-800 select-none min-w-[20px] text-center" id="qty-val-${p.id}">${selection.qty}</span>
+                  <button onclick="changeQty('${p.id}', 1)" class="px-3 py-2.5 text-slate-500 hover:bg-slate-100 transition-colors focus:outline-none" aria-label="Plus"><i data-lucide="plus" class="w-3.5 h-3.5"></i></button>
                 </div>
-
-                <!-- Add to Cart Button -->
                 <button onclick="addToCart('${p.id}')" class="flex-1 inline-flex items-center justify-center gap-2 bg-burgundy hover:bg-[#431223] text-white py-2.5 px-4 rounded-xl text-xs md:text-sm font-bold shadow-xs transition-all active:scale-95">
-                  <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                  <span>Ajouter</span>
+                  <i data-lucide="shopping-bag" class="w-4 h-4"></i><span>Ajouter</span>
                 </button>
               </div>
-            </div>
-          `;
+            </div>`;
 
-          if (containerMap[p.category]) {
-            containerMap[p.category].appendChild(div);
-          }
+          if (containerMap[p.category]) containerMap[p.category].appendChild(div);
         });
-
-        // Initialize newly rendered icons
         lucide.createIcons();
       }
 
-      // Handle custom selections
       window.selectVariant = function(productId, type, value) {
         state.catalogSelections[productId][type] = value;
         renderCatalog();
       };
 
-      // Handle catalog quantity changes
       window.changeQty = function(productId, direction) {
         const prod = products.find(p => p.id === productId);
         const isLimited = (prod.category === 'cosmetics' || prod.category === 'supplements');
         const maxVal = isLimited ? 5 : 10;
-        
         let currentQty = state.catalogSelections[productId].qty;
         let newQty = currentQty + direction;
-        
         if (newQty < 1) newQty = 1;
-        if (newQty > maxVal) {
-          newQty = maxVal;
-          showToast(`Limite maximale de ${maxVal} unités pour ce produit.`);
-        }
-
+        if (newQty > maxVal) { newQty = maxVal; showToast(`Limite maximale de ${maxVal} unités pour ce produit.`); }
         state.catalogSelections[productId].qty = newQty;
         document.getElementById(`qty-val-${productId}`).innerText = newQty;
       };
 
-      // Toast Notification helper
       function showToast(message) {
         const toast = document.getElementById("toast");
         const msgEl = document.getElementById("toast-message");
         msgEl.innerText = message;
         toast.classList.remove("translate-y-24", "opacity-0");
         toast.classList.add("translate-y-0", "opacity-100");
-        
-        setTimeout(() => {
-          toast.classList.add("translate-y-24", "opacity-0");
-          toast.classList.remove("translate-y-0", "opacity-100");
-        }, 3000);
+        setTimeout(() => { toast.classList.add("translate-y-24", "opacity-0"); toast.classList.remove("translate-y-0", "opacity-100"); }, 3000);
       }
 
-      // Toggle Cart Drawer
       window.toggleCart = function() {
         state.drawerOpen = !state.drawerOpen;
         const drawer = document.getElementById("cart-drawer");
         const overlay = document.getElementById("cart-drawer-overlay");
-
         if (state.drawerOpen) {
           drawer.classList.remove("translate-x-full");
           overlay.classList.remove("opacity-0", "pointer-events-none");
@@ -690,444 +488,132 @@
         }
       };
 
-      // Add Catalog selection to central Cart
       window.addToCart = function(productId) {
         const prod = products.find(p => p.id === productId);
         const selection = state.catalogSelections[productId];
-
         const cartItemId = `${productId}-${selection.size || ''}-${selection.color || ''}`;
-
         const existingItem = state.cart.find(item => item.cartItemId === cartItemId);
         const isLimited = (prod.category === 'cosmetics' || prod.category === 'supplements');
         const maxVal = isLimited ? 5 : 10;
 
         if (existingItem) {
           let targetQty = existingItem.qty + selection.qty;
-          if (targetQty > maxVal) {
-            existingItem.qty = maxVal;
-            showToast(`Quantité limitée à ${maxVal} pour cet article.`);
-          } else {
-            existingItem.qty = targetQty;
-            showToast("Panier mis à jour !");
-          }
+          if (targetQty > maxVal) { existingItem.qty = maxVal; showToast(`Quantité limitée à ${maxVal} pour cet article.`); }
+          else { existingItem.qty = targetQty; showToast("Panier mis à jour !"); }
         } else {
-          state.cart.push({
-            cartItemId: cartItemId,
-            productId: prod.id,
-            name: prod.name,
-            price: prod.price,
-            image: prod.image,
-            size: selection.size,
-            color: selection.color,
-            qty: selection.qty,
-            maxQty: maxVal
-          });
+          state.cart.push({ cartItemId, productId: prod.id, name: prod.name, price: prod.price, image: prod.image, size: selection.size, color: selection.color, qty: selection.qty, maxQty: maxVal });
           showToast("Produit ajouté au panier !");
         }
 
-        // Pulse cart button
         const navCartBtn = document.getElementById("cart-nav-btn");
         navCartBtn.classList.add("scale-110", "bg-burgundy/10");
         setTimeout(() => navCartBtn.classList.remove("scale-110", "bg-burgundy/10"), 300);
 
-        // Reset catalog item qty to 1
         state.catalogSelections[productId].qty = 1;
         document.getElementById(`qty-val-${productId}`).innerText = "1";
-
         updateBadges();
-        
-        setTimeout(() => {
-          state.view = "cart";
-          toggleCart();
-        }, 300);
+        setTimeout(() => { state.view = "cart"; toggleCart(); }, 300);
       };
 
-      // Update Nav & Floating Badge counts
       function updateBadges() {
         const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
         const navBadge = document.getElementById("cart-badge");
         const floatBadge = document.getElementById("floating-cart-badge");
-
-        if (totalItems > 0) {
-          navBadge.innerText = totalItems;
-          navBadge.classList.remove("hidden");
-          floatBadge.innerText = totalItems;
-          floatBadge.classList.remove("hidden");
-        } else {
-          navBadge.classList.add("hidden");
-          floatBadge.classList.add("hidden");
-        }
+        if (totalItems > 0) { navBadge.innerText = totalItems; navBadge.classList.remove("hidden"); floatBadge.innerText = totalItems; floatBadge.classList.remove("hidden"); }
+        else { navBadge.classList.add("hidden"); floatBadge.classList.add("hidden"); }
       }
 
-      // Update Cart qty stepper inside Drawer
       window.updateCartQty = function(cartItemId, direction) {
         const item = state.cart.find(i => i.cartItemId === cartItemId);
         if (item) {
           const newQty = item.qty + direction;
-          if (newQty >= 1 && newQty <= item.maxQty) {
-            item.qty = newQty;
-            renderCartDrawer();
-            updateBadges();
-          } else if (newQty > item.maxQty) {
-            showToast(`Quantité maximale de ${item.maxQty} atteinte.`);
-          }
+          if (newQty >= 1 && newQty <= item.maxQty) { item.qty = newQty; renderCartDrawer(); updateBadges(); }
+          else if (newQty > item.maxQty) { showToast(`Quantité maximale de ${item.maxQty} atteinte.`); }
         }
       };
 
-      // Remove item from Cart
       window.removeCartItem = function(cartItemId) {
         state.cart = state.cart.filter(item => item.cartItemId !== cartItemId);
-        renderCartDrawer();
-        updateBadges();
-        showToast("Article retiré du panier");
+        renderCartDrawer(); updateBadges(); showToast("Article retiré du panier");
       };
 
-      // Render the specific states of the Sidebar Drawer
       function renderCartDrawer() {
         const drawerTitle = document.getElementById("drawer-title");
         const drawerBody = document.getElementById("drawer-body");
         const drawerFooter = document.getElementById("drawer-footer");
-
         const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
         const overallTotal = subtotal + state.shippingFee;
 
         if (state.view === "cart") {
           drawerTitle.innerText = "Mon Panier";
           drawerFooter.className = "p-5 border-t border-slate-100 bg-slate-50 space-y-3";
-
           if (state.cart.length === 0) {
-            drawerBody.innerHTML = `
-              <div class="flex flex-col items-center justify-center h-64 text-center">
-                <div class="w-16 h-16 bg-burgundy/5 rounded-full flex items-center justify-center text-burgundy mb-4 animate-float">
-                  <i data-lucide="shopping-bag" class="w-8 h-8"></i>
-                </div>
-                <h4 class="font-bold text-slate-800 text-lg mb-1">Votre panier est vide</h4>
-                <p class="text-sm text-slate-500 max-w-xs">Découvrez nos produits exclusifs et commencez votre shopping.</p>
-                <button onclick="toggleCart()" class="mt-6 bg-burgundy text-white hover:bg-[#431223] px-6 py-2.5 rounded-xl text-xs font-bold transition-all active:scale-95">
-                  Continuer mes achats
-                </button>
-              </div>
-            `;
-            drawerFooter.innerHTML = "";
-            drawerFooter.classList.add("hidden");
+            drawerBody.innerHTML = `<div class="flex flex-col items-center justify-center h-64 text-center"><div class="w-16 h-16 bg-burgundy/5 rounded-full flex items-center justify-center text-burgundy mb-4 animate-float"><i data-lucide="shopping-bag" class="w-8 h-8"></i></div><h4 class="font-bold text-slate-800 text-lg mb-1">Votre panier est vide</h4><p class="text-sm text-slate-500 max-w-xs">Découvrez nos produits exclusifs et commencez votre shopping.</p><button onclick="toggleCart()" class="mt-6 bg-burgundy text-white hover:bg-[#431223] px-6 py-2.5 rounded-xl text-xs font-bold transition-all active:scale-95">Continuer mes achats</button></div>`;
+            drawerFooter.innerHTML = ""; drawerFooter.classList.add("hidden");
           } else {
             drawerFooter.classList.remove("hidden");
-            
-            drawerBody.innerHTML = `
-              <div class="space-y-4">
-                ${state.cart.map(item => `
-                  <div class="flex gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-xs relative">
-                    <div class="w-16 h-16 rounded-lg bg-slate-50 overflow-hidden shrink-0 border border-slate-100">
-                      <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+            drawerBody.innerHTML = `<div class="space-y-4">${state.cart.map(item => `
+              <div class="flex gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-xs relative">
+                <div class="w-16 h-16 rounded-lg bg-slate-50 overflow-hidden shrink-0 border border-slate-100"><img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover"></div>
+                <div class="flex-1 flex flex-col justify-between">
+                  <div><h4 class="font-bold text-slate-900 text-xs md:text-sm leading-tight pr-5">${item.name}</h4>${(item.size || item.color) ? `<div class="flex flex-wrap gap-1 mt-1">${item.size ? `<span class="inline-block bg-slate-100 text-slate-600 text-[9px] px-1.5 py-0.5 rounded-md font-bold">Taille: ${item.size}</span>` : ""}${item.color ? `<span class="inline-block bg-slate-100 text-slate-600 text-[9px] px-1.5 py-0.5 rounded-md font-bold">Couleur: ${item.color}</span>` : ""}</div>` : ""}</div>
+                  <div class="flex items-center justify-between mt-2.5">
+                    <div class="flex items-center border border-slate-200 rounded-lg overflow-hidden bg-slate-50 shrink-0">
+                      <button onclick="updateCartQty('${item.cartItemId}', -1)" class="px-2 py-1 text-slate-500 hover:bg-slate-100 transition-colors focus:outline-none"><i data-lucide="minus" class="w-3 h-3"></i></button>
+                      <span class="px-2 py-0.5 text-xs font-bold text-slate-800">${item.qty}</span>
+                      <button onclick="updateCartQty('${item.cartItemId}', 1)" class="px-2 py-1 text-slate-500 hover:bg-slate-100 transition-colors focus:outline-none"><i data-lucide="plus" class="w-3 h-3"></i></button>
                     </div>
-                    <div class="flex-1 flex flex-col justify-between">
-                      <div>
-                        <h4 class="font-bold text-slate-900 text-xs md:text-sm leading-tight pr-5">${item.name}</h4>
-                        ${(item.size || item.color) ? `
-                          <div class="flex flex-wrap gap-1 mt-1">
-                            ${item.size ? `<span class="inline-block bg-slate-100 text-slate-600 text-[9px] px-1.5 py-0.5 rounded-md font-bold">Taille: ${item.size}</span>` : ""}
-                            ${item.color ? `<span class="inline-block bg-slate-100 text-slate-600 text-[9px] px-1.5 py-0.5 rounded-md font-bold">Couleur: ${item.color}</span>` : ""}
-                          </div>
-                        ` : ""}
-                      </div>
-                      <div class="flex items-center justify-between mt-2.5">
-                        <div class="flex items-center border border-slate-200 rounded-lg overflow-hidden bg-slate-50 shrink-0">
-                          <button onclick="updateCartQty('${item.cartItemId}', -1)" class="px-2 py-1 text-slate-500 hover:bg-slate-100 transition-colors focus:outline-none">
-                            <i data-lucide="minus" class="w-3 h-3"></i>
-                          </button>
-                          <span class="px-2 py-0.5 text-xs font-bold text-slate-800">${item.qty}</span>
-                          <button onclick="updateCartQty('${item.cartItemId}', 1)" class="px-2 py-1 text-slate-500 hover:bg-slate-100 transition-colors focus:outline-none">
-                            <i data-lucide="plus" class="w-3 h-3"></i>
-                          </button>
-                        </div>
-                        <span class="text-xs font-extrabold text-burgundy">${formatPrice(item.price * item.qty)}</span>
-                      </div>
-                    </div>
-                    <button onclick="removeCartItem('${item.cartItemId}')" class="absolute top-3 right-3 p-1 hover:bg-red-50 rounded-full text-slate-400 hover:text-red-500 transition-colors focus:outline-none" aria-label="Retirer">
-                      <i data-lucide="trash-2" class="w-4 h-4"></i>
-                    </button>
+                    <span class="text-xs font-extrabold text-burgundy">${formatPrice(item.price * item.qty)}</span>
                   </div>
-                `).join('')}
-              </div>
-            `;
-
-            drawerFooter.innerHTML = `
-              <div class="flex items-center justify-between text-slate-700 font-semibold mb-2">
-                <span class="text-sm">Sous-total</span>
-                <span class="text-base text-burgundy font-extrabold">${formatPrice(subtotal)}</span>
-              </div>
-              <p class="text-[10px] text-slate-400 mb-4 leading-relaxed">Frais de livraison calculés lors de la prochaine étape.</p>
-              <button onclick="goToCheckout()" class="w-full bg-burgundy hover:bg-[#431223] text-white py-3.5 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
-                <span>Passer à la caisse</span>
-                <i data-lucide="arrow-right" class="w-4 h-4"></i>
-              </button>
-            `;
+                </div>
+                <button onclick="removeCartItem('${item.cartItemId}')" class="absolute top-3 right-3 p-1 hover:bg-red-50 rounded-full text-slate-400 hover:text-red-500 transition-colors focus:outline-none" aria-label="Retirer"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+              </div>`).join('')}</div>`;
+            drawerFooter.innerHTML = `<div class="flex items-center justify-between text-slate-700 font-semibold mb-2"><span class="text-sm">Sous-total</span><span class="text-base text-burgundy font-extrabold">${formatPrice(subtotal)}</span></div><p class="text-[10px] text-slate-400 mb-4 leading-relaxed">Frais de livraison calculés lors de la prochaine étape.</p><button onclick="goToCheckout()" class="w-full bg-burgundy hover:bg-[#431223] text-white py-3.5 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"><span>Passer à la caisse</span><i data-lucide="arrow-right" class="w-4 h-4"></i></button>`;
           }
-        }
-
-        else if (state.view === "checkout") {
+        } else if (state.view === "checkout") {
           drawerTitle.innerText = "Validation de Commande";
           drawerFooter.className = "p-5 border-t border-slate-100 bg-slate-50 space-y-3";
-
-          drawerBody.innerHTML = `
-            <button onclick="backToCart()" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-burgundy transition-colors mb-4 focus:outline-none">
-              <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-              <span>Retour au panier</span>
-            </button>
-
-            <form id="checkout-form" class="space-y-4">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-burgundy border-b border-lightPink/20 pb-1 mb-3">Informations de livraison</h4>
-              
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Nom <span class="text-red-500">*</span></label>
-                  <input type="text" id="cust-lastName" value="${state.customer.lastName}" oninput="updateCustomerField('lastName', this.value)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="e.g. Ben" required>
-                </div>
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Prénom <span class="text-red-500">*</span></label>
-                  <input type="text" id="cust-firstName" value="${state.customer.firstName}" oninput="updateCustomerField('firstName', this.value)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="e.g. Meriem" required>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Téléphone <span class="text-red-500">*</span></label>
-                <input type="tel" id="cust-phone" value="${state.customer.phone}" oninput="updateCustomerField('phone', this.value)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="e.g. 0550123456" required>
-              </div>
-
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Wilaya <span class="text-red-500">*</span></label>
-                  <select id="cust-wilaya" onchange="updateWilayaSelection(this.value)" class="w-full px-2.5 py-2 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:border-burgundy" required>
-                    <option value="">Choisir...</option>
-                    ${wilayas.map(w => `<option value="${w.name}" ${state.customer.wilaya === w.name ? 'selected' : ''}>${w.code} - ${w.name}</option>`).join('')}
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Daïra <span class="text-red-500">*</span></label>
-                  <input type="text" id="cust-daira" value="${state.customer.daira}" oninput="updateCustomerField('daira', this.value)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="e.g. Sidi M'Hamed" required>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Adresse complète <span class="text-red-500">*</span></label>
-                <textarea id="cust-address" oninput="updateCustomerField('address', this.value)" rows="2" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="Numéro de rue, Quartier, Appartement..." required>${state.customer.address}</textarea>
-              </div>
-
-              <h4 class="text-xs font-bold uppercase tracking-wider text-burgundy border-b border-lightPink/20 pb-1 pt-2 mb-3">Mode de Livraison</h4>
-              <div class="grid grid-cols-1 gap-2">
-                <label class="flex items-center justify-between p-3 border rounded-xl cursor-pointer transition-all ${state.deliveryMethod === 'domicile' ? 'border-burgundy bg-burgundy/5' : 'border-slate-200 hover:bg-slate-50'}">
-                  <div class="flex items-center gap-2.5">
-                    <input type="radio" name="del-method" value="domicile" ${state.deliveryMethod === 'domicile' ? 'checked' : ''} onchange="updateDeliveryMethod('domicile')" class="accent-burgundy w-4 h-4">
-                    <div>
-                      <span class="text-xs font-bold text-slate-800 block">Livraison à domicile</span>
-                      <span class="text-[10px] text-slate-400">Directement chez vous</span>
-                    </div>
-                  </div>
-                  <span class="text-xs font-extrabold text-burgundy">600 DA</span>
-                </label>
-
-                <label class="flex items-center justify-between p-3 border rounded-xl cursor-pointer transition-all ${state.deliveryMethod === 'bureau' ? 'border-burgundy bg-burgundy/5' : 'border-slate-200 hover:bg-slate-50'}">
-                  <div class="flex items-center gap-2.5">
-                    <input type="radio" name="del-method" value="bureau" ${state.deliveryMethod === 'bureau' ? 'checked' : ''} onchange="updateDeliveryMethod('bureau')" class="accent-burgundy w-4 h-4">
-                    <div>
-                      <span class="text-xs font-bold text-slate-800 block">Retrait au bureau</span>
-                      <span class="text-[10px] text-slate-400">Récupération au bureau d'expédition</span>
-                    </div>
-                  </div>
-                  <span class="text-xs font-extrabold text-burgundy">400 DA</span>
-                </label>
-              </div>
-
-              <h4 class="text-xs font-bold uppercase tracking-wider text-burgundy border-b border-lightPink/20 pb-1 pt-2 mb-3">Mode de Paiement</h4>
-              <div class="p-3 border border-green-200 bg-green-50/50 rounded-xl flex items-center gap-3">
-                <div class="p-1 bg-green-100 rounded-full text-green-700">
-                  <i data-lucide="hand-coins" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs font-bold text-slate-800 block">Paiement à la livraison (COD)</span>
-                  <span class="text-[10px] text-slate-500">Réglez en espèces dès réception de votre commande.</span>
-                </div>
-              </div>
-            </form>
-          `;
-
-          drawerFooter.innerHTML = `
-            <div class="space-y-1.5 border-b border-slate-200 pb-2.5 text-xs text-slate-600">
-              <div class="flex justify-between">
-                <span>Sous-total articles</span>
-                <span>${formatPrice(subtotal)}</span>
-              </div>
-              <div class="flex justify-between">
-                <span>Frais de livraison (${state.deliveryMethod === 'domicile' ? 'À domicile' : 'Bureau'})</span>
-                <span>${formatPrice(state.shippingFee)}</span>
-              </div>
-            </div>
-            <div class="flex items-center justify-between font-bold text-slate-800 text-sm py-1">
-              <span>Montant Total</span>
-              <span class="text-base text-burgundy font-extrabold">${formatPrice(overallTotal)}</span>
-            </div>
-            <button onclick="submitOrder(event)" class="w-full bg-burgundy hover:bg-[#431223] text-white py-3.5 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 mt-2">
-              <i data-lucide="shield-check" class="w-4.5 h-4.5"></i>
-              <span>Confirmer la commande</span>
-            </button>
-          `;
-        }
-
-        else if (state.view === "success") {
+          drawerBody.innerHTML = `<button onclick="backToCart()" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-burgundy transition-colors mb-4 focus:outline-none"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i><span>Retour au panier</span></button><form id="checkout-form" class="space-y-4"><h4 class="text-xs font-bold uppercase tracking-wider text-burgundy border-b border-lightPink/20 pb-1 mb-3">Informations de livraison</h4><div class="grid grid-cols-2 gap-3"><div><label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Nom <span class="text-red-500">*</span></label><input type="text" id="cust-lastName" value="${state.customer.lastName}" oninput="updateCustomerField('lastName', this.value)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="e.g. Ben" required></div><div><label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Prénom <span class="text-red-500">*</span></label><input type="text" id="cust-firstName" value="${state.customer.firstName}" oninput="updateCustomerField('firstName', this.value)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="e.g. Meriem" required></div></div><div><label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Téléphone <span class="text-red-500">*</span></label><input type="tel" id="cust-phone" value="${state.customer.phone}" oninput="updateCustomerField('phone', this.value)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="e.g. 0550123456" required></div><div class="grid grid-cols-2 gap-3"><div><label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Wilaya <span class="text-red-500">*</span></label><select id="cust-wilaya" onchange="updateWilayaSelection(this.value)" class="w-full px-2.5 py-2 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:border-burgundy" required><option value="">Choisir...</option>${wilayas.map(w => `<option value="${w.name}" ${state.customer.wilaya === w.name ? 'selected' : ''}>${w.code} - ${w.name}</option>`).join('')}</select></div><div><label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Daïra <span class="text-red-500">*</span></label><input type="text" id="cust-daira" value="${state.customer.daira}" oninput="updateCustomerField('daira', this.value)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="e.g. Sidi M'Hamed" required></div></div><div><label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wide mb-1">Adresse complète <span class="text-red-500">*</span></label><textarea id="cust-address" oninput="updateCustomerField('address', this.value)" rows="2" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-burgundy" placeholder="Numéro de rue, Quartier, Appartement..." required>${state.customer.address}</textarea></div><h4 class="text-xs font-bold uppercase tracking-wider text-burgundy border-b border-lightPink/20 pb-1 pt-2 mb-3">Mode de Livraison</h4><div class="grid grid-cols-1 gap-2"><label class="flex items-center justify-between p-3 border rounded-xl cursor-pointer transition-all ${state.deliveryMethod === 'domicile' ? 'border-burgundy bg-burgundy/5' : 'border-slate-200 hover:bg-slate-50'}"><div class="flex items-center gap-2.5"><input type="radio" name="del-method" value="domicile" ${state.deliveryMethod === 'domicile' ? 'checked' : ''} onchange="updateDeliveryMethod('domicile')" class="accent-burgundy w-4 h-4"><div><span class="text-xs font-bold text-slate-800 block">Livraison à domicile</span><span class="text-[10px] text-slate-400">Directement chez vous</span></div></div><span class="text-xs font-extrabold text-burgundy">600 DA</span></label><label class="flex items-center justify-between p-3 border rounded-xl cursor-pointer transition-all ${state.deliveryMethod === 'bureau' ? 'border-burgundy bg-burgundy/5' : 'border-slate-200 hover:bg-slate-50'}"><div class="flex items-center gap-2.5"><input type="radio" name="del-method" value="bureau" ${state.deliveryMethod === 'bureau' ? 'checked' : ''} onchange="updateDeliveryMethod('bureau')" class="accent-burgundy w-4 h-4"><div><span class="text-xs font-bold text-slate-800 block">Retrait au bureau</span><span class="text-[10px] text-slate-400">Récupération au bureau d'expédition</span></div></div><span class="text-xs font-extrabold text-burgundy">400 DA</span></label></div><h4 class="text-xs font-bold uppercase tracking-wider text-burgundy border-b border-lightPink/20 pb-1 pt-2 mb-3">Mode de Paiement</h4><div class="p-3 border border-green-200 bg-green-50/50 rounded-xl flex items-center gap-3"><div class="p-1 bg-green-100 rounded-full text-green-700"><i data-lucide="hand-coins" class="w-4 h-4"></i></div><div><span class="text-xs font-bold text-slate-800 block">Paiement à la livraison (COD)</span><span class="text-[10px] text-slate-500">Réglez en espèces dès réception de votre commande.</span></div></div></form>`;
+          drawerFooter.innerHTML = `<div class="space-y-1.5 border-b border-slate-200 pb-2.5 text-xs text-slate-600"><div class="flex justify-between"><span>Sous-total articles</span><span>${formatPrice(subtotal)}</span></div><div class="flex justify-between"><span>Frais de livraison (${state.deliveryMethod === 'domicile' ? 'À domicile' : 'Bureau'})</span><span>${formatPrice(state.shippingFee)}</span></div></div><div class="flex items-center justify-between font-bold text-slate-800 text-sm py-1"><span>Montant Total</span><span class="text-base text-burgundy font-extrabold">${formatPrice(overallTotal)}</span></div><button onclick="submitOrder(event)" class="w-full bg-burgundy hover:bg-[#431223] text-white py-3.5 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 mt-2"><i data-lucide="shield-check" class="w-4.5 h-4.5"></i><span>Confirmer la commande</span></button>`;
+        } else if (state.view === "success") {
           drawerTitle.innerText = "Commande Confirmée !";
           drawerFooter.className = "p-5 border-t border-slate-100 bg-slate-50";
-
-          drawerBody.innerHTML = `
-            <div class="flex flex-col items-center justify-center text-center py-6">
-              <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center text-green-500 mb-6 border border-green-200 shadow-sm animate-float">
-                <i data-lucide="party-popper" class="w-8 h-8"></i>
-              </div>
-
-              <h4 class="font-serif italic font-extrabold text-burgundy text-xl mb-2">Votre commande a été enregistrée avec succès.</h4>
-              <p class="text-sm font-bold text-slate-800 mb-1">Nous vous contacterons prochainement.</p>
-              <p class="text-xs text-slate-400 mb-6">Merci pour votre confiance chez <b>For you by mb</b>.</p>
-
-              <div class="w-full bg-[#FDF8FA] border border-lightPink/35 rounded-xl p-4 text-left text-xs text-slate-700 space-y-3.5 max-w-sm">
-                <div class="border-b border-lightPink/20 pb-2">
-                  <span class="font-bold text-burgundy block text-[11px] uppercase tracking-wider mb-1">Détails de Livraison</span>
-                  <p class="font-semibold text-slate-800 text-sm">${state.confirmedOrder.custName}</p>
-                  <p class="text-slate-600 mt-0.5">${state.confirmedOrder.phone}</p>
-                  <p class="text-slate-500 mt-1 italic">${state.confirmedOrder.fullAddress}</p>
-                </div>
-                
-                <div class="space-y-1.5 border-b border-lightPink/20 pb-2">
-                  <span class="font-bold text-burgundy block text-[11px] uppercase tracking-wider mb-1">Articles Commandés</span>
-                  ${state.confirmedOrder.items.map(it => `
-                    <div class="flex justify-between items-center text-slate-600 leading-tight">
-                      <div class="pr-3">
-                        <span class="font-bold text-slate-800">${it.qty}x</span> ${it.name}
-                        ${(it.size || it.color) ? `
-                          <span class="text-[9px] text-slate-400 block">${it.size ? `T: ${it.size}` : ''} ${it.color ? `C: ${it.color}` : ''}</span>
-                        ` : ''}
-                      </div>
-                      <span class="font-medium shrink-0">${formatPrice(it.price * it.qty)}</span>
-                    </div>
-                  `).join('')}
-                </div>
-
-                <div class="flex justify-between font-bold text-slate-900 text-sm pt-1">
-                  <span>Montant Total (à la réception)</span>
-                  <span class="text-burgundy font-extrabold text-base">${formatPrice(state.confirmedOrder.total)}</span>
-                </div>
-              </div>
-            </div>
-          `;
-
-          drawerFooter.innerHTML = `
-            <button onclick="resetAndContinueShopping()" class="w-full bg-burgundy hover:bg-[#431223] text-white py-3.5 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
-              <span>Continuer mes achats</span>
-              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-            </button>
-          `;
+          drawerBody.innerHTML = `<div class="flex flex-col items-center justify-center text-center py-6"><div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center text-green-500 mb-6 border border-green-200 shadow-sm animate-float"><i data-lucide="party-popper" class="w-8 h-8"></i></div><h4 class="font-serif italic font-extrabold text-burgundy text-xl mb-2">Votre commande a été enregistrée avec succès.</h4><p class="text-sm font-bold text-slate-800 mb-1">Nous vous contacterons prochainement.</p><p class="text-xs text-slate-400 mb-6">Merci pour votre confiance chez <b>For you by mb</b>.</p><div class="w-full bg-[#FDF8FA] border border-lightPink/35 rounded-xl p-4 text-left text-xs text-slate-700 space-y-3.5 max-w-sm"><div class="border-b border-lightPink/20 pb-2"><span class="font-bold text-burgundy block text-[11px] uppercase tracking-wider mb-1">Détails de Livraison</span><p class="font-semibold text-slate-800 text-sm">${state.confirmedOrder.custName}</p><p class="text-slate-600 mt-0.5">${state.confirmedOrder.phone}</p><p class="text-slate-500 mt-1 italic">${state.confirmedOrder.fullAddress}</p></div><div class="space-y-1.5 border-b border-lightPink/20 pb-2"><span class="font-bold text-burgundy block text-[11px] uppercase tracking-wider mb-1">Articles Commandés</span>${state.confirmedOrder.items.map(it => `<div class="flex justify-between items-center text-slate-600 leading-tight"><div class="pr-3"><span class="font-bold text-slate-800">${it.qty}x</span> ${it.name}${(it.size || it.color) ? `<span class="text-[9px] text-slate-400 block">${it.size ? `T: ${it.size}` : ''} ${it.color ? `C: ${it.color}` : ''}</span>` : ''}</div><span class="font-medium shrink-0">${formatPrice(it.price * it.qty)}</span></div>`).join('')}</div><div class="flex justify-between font-bold text-slate-900 text-sm pt-1"><span>Montant Total (à la réception)</span><span class="text-burgundy font-extrabold text-base">${formatPrice(state.confirmedOrder.total)}</span></div></div></div>`;
+          drawerFooter.innerHTML = `<button onclick="resetAndContinueShopping()" class="w-full bg-burgundy hover:bg-[#431223] text-white py-3.5 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"><span>Continuer mes achats</span><i data-lucide="shopping-bag" class="w-4 h-4"></i></button>`;
         }
-
         lucide.createIcons();
       }
 
-      window.goToCheckout = function() {
-        state.view = "checkout";
-        renderCartDrawer();
-      };
-
-      window.backToCart = function() {
-        state.view = "cart";
-        renderCartDrawer();
-      };
-
-      window.updateCustomerField = function(field, val) {
-        state.customer[field] = val;
-      };
-
-      window.updateWilayaSelection = function(val) {
-        state.customer.wilaya = val;
-      };
-
-      window.updateDeliveryMethod = function(method) {
-        state.deliveryMethod = method;
-        state.shippingFee = method === "domicile" ? 600 : 400;
-        renderCartDrawer();
-      };
+      window.goToCheckout = function() { state.view = "checkout"; renderCartDrawer(); };
+      window.backToCart = function() { state.view = "cart"; renderCartDrawer(); };
+      window.updateCustomerField = function(field, val) { state.customer[field] = val; };
+      window.updateWilayaSelection = function(val) { state.customer.wilaya = val; };
+      window.updateDeliveryMethod = function(method) { state.deliveryMethod = method; state.shippingFee = method === "domicile" ? 600 : 400; renderCartDrawer(); };
 
       window.submitOrder = function(event) {
         event.preventDefault();
-
-        const lastName = state.customer.lastName.trim();
-        const firstName = state.customer.firstName.trim();
-        const phone = state.customer.phone.trim();
-        const wilaya = state.customer.wilaya.trim();
-        const daira = state.customer.daira.trim();
-        const address = state.customer.address.trim();
-
-        if (!lastName || !firstName || !phone || !wilaya || !daira || !address) {
-          showToast("Veuillez remplir tous les champs obligatoires (*)");
-          return;
-        }
-
-        if (phone.length < 8) {
-          showToast("Numéro de téléphone invalide (8 chiffres minimum)");
-          return;
-        }
-
+        const lastName = state.customer.lastName.trim(), firstName = state.customer.firstName.trim(), phone = state.customer.phone.trim(), wilaya = state.customer.wilaya.trim(), daira = state.customer.daira.trim(), address = state.customer.address.trim();
+        if (!lastName || !firstName || !phone || !wilaya || !daira || !address) { showToast("Veuillez remplir tous les champs obligatoires (*)"); return; }
+        if (phone.length < 8) { showToast("Numéro de téléphone invalide (8 chiffres minimum)"); return; }
         const confirmBtn = event.currentTarget;
         confirmBtn.disabled = true;
-        confirmBtn.innerHTML = `
-          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          <span>Traitement en cours...</span>
-        `;
-
+        confirmBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Traitement en cours...</span>`;
         setTimeout(() => {
           const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
           const totalWithShipping = subtotal + state.shippingFee;
-
-          state.confirmedOrder = {
-            custName: `${firstName} ${lastName}`,
-            phone: phone,
-            fullAddress: `${address}, ${daira}, ${wilaya}`,
-            items: [...state.cart],
-            total: totalWithShipping
-          };
-
-          state.view = "success";
-          renderCartDrawer();
+          state.confirmedOrder = { custName: `${firstName} ${lastName}`, phone, fullAddress: `${address}, ${daira}, ${wilaya}`, items: [...state.cart], total: totalWithShipping };
+          state.view = "success"; renderCartDrawer();
         }, 1200);
       };
 
       window.resetAndContinueShopping = function() {
-        state.cart = [];
-        state.customer = {
-          lastName: "",
-          firstName: "",
-          phone: "",
-          wilaya: "",
-          daira: "",
-          address: ""
-        };
-        state.view = "cart";
-        state.deliveryMethod = "domicile";
-        state.shippingFee = 600;
-        state.confirmedOrder = null;
-        
-        initializeSelections();
-        updateBadges();
-        renderCatalog();
-        toggleCart();
+        state.cart = []; state.customer = { lastName: "", firstName: "", phone: "", wilaya: "", daira: "", address: "" };
+        state.view = "cart"; state.deliveryMethod = "domicile"; state.shippingFee = 600; state.confirmedOrder = null;
+        initializeSelections(); updateBadges(); renderCatalog(); toggleCart();
       };
 
-      // App Entry Point
       window.addEventListener("DOMContentLoaded", () => {
-        initializeSelections();
-        renderCatalog();
-        updateBadges();
-        // Par défaut, afficher toutes les sections
-        resetToAllSections();
+        initializeSelections(); renderCatalog(); updateBadges(); resetToAllSections();
       });
     </script>
   </body>
